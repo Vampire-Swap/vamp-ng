@@ -1,0 +1,15 @@
+#offcanvas-menu.show {
+    display: flex;
+    opacity: 1;
+    height: 100vh;
+    -webkit-transition: all 250ms cubic-bezier(.694, .0482, .335, 1); 
+    transition: all 250ms cubic-bezier(.694, .0482, .335, 1);
+}
+
+#offcanvas-menu {
+    -webkit-transition: all 230ms cubic-bezier(.694, .0482, .335, 1); 
+    transition: all 230ms cubic-bezier(.694, .0482, .335, 1);
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
