@@ -1,0 +1,12 @@
+<div class="card text-center shadow-2xl">
+    <figure class="px-10 pt-10">
+        <img [src]="featureCard.imagePath" alt="" class="rounded-xl">
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">{{ featureCard.cardTitle }}</h2>
+        <p>{{ featureCard.cardContent }}</p>
+        <div class="justify-center card-actions">
+            <a [routerLink]="featureCard.cardActionRoute" class="btn btn-outline btn-accent">{{ featureCard.cardActionText }}</a>
+        </div>
+    </div>
+</div>

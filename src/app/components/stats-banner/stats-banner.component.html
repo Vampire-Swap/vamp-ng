@@ -1,0 +1,105 @@
+<div class="w-full shadow-xl stats grid-flow-row sm:hidden mt-5">
+    <div class="stat">
+        <div class="stat-figure text-secondary">
+            <fa-icon [icon]="tvlIcon" size="lg"></fa-icon>
+        </div>
+        <div class="stat-title">Total Value Locked</div>
+        <div *ngIf="(tokenData | async) as tokenData; else loadingTVL" class="stat-value">{{ tokenData.pairQuote | sum |
+            kformat | usd }}</div>
+        <ng-template #loadingTVL>
+            <div class="stat-value bg-gray-200 rounded animate-pulse w-1/2 h-10"></div>
+        </ng-template>
+        <div class="stat-desc">Accross all products</div>
+    </div>
+    <div class="stat">
+        <div class="stat-figure text-info">
+            <fa-icon [icon]="marketCapIcon" size="lg"></fa-icon>
+        </div>
+        <div class="stat-title">Market Cap</div>
+        <ng-container *ngIf="(tokenData | async) as tokenData; else loadingMC">
+            <ng-container *ngIf="(totalSupply | async) as totalSupply; else loadingMC">
+                <div *ngIf="(burnedTokens | async) as burn; else loadingMC" class="stat-value">{{ totalSupply |
+                    ethformat | dif:burn | mul:tokenData.tokenDayData[0].priceUSD | kformat | usd }}</div>
+            </ng-container>
+        </ng-container>
+        <ng-template #loadingMC>
+            <div class="stat-value bg-gray-200 rounded animate-pulse w-1/2 h-10"></div>
+        </ng-template>
+        <div *ngIf="(tokenData | async) as tokenData; else loadingPrice" class="stat-desc">Current Price: {{
+            tokenData.tokenDayData[0].priceUSD | kformat | usd }}</div>
+        <ng-template #loadingPrice>
+            <div class="stat-desc bg-gray-200 rounded animate-pulse w-1/2 h-6"></div>
+        </ng-template>
+    </div>
+    <div class="stat">
+        <div class="stat-figure text-primary">
+            <fa-icon [icon]="circulatingIcon" size="lg"></fa-icon>
+        </div>
+        <div class="stat-title">Circulating Tokens</div>
+        <ng-container *ngIf="(totalSupply | async) as totalSupply; else loadingCirc">
+            <div *ngIf="(burnedTokens | async) as burn; else loadingCirc" class="stat-value">{{ totalSupply | ethformat
+                | dif:burn | kformat }}</div>
+        </ng-container>
+        <ng-template #loadingCirc>
+            <div class="stat-value bg-gray-200 rounded animate-pulse w-1/2 h-10"></div>
+        </ng-template>
+        <div *ngIf="(burnedTokens | async) as burned; else loadingBurned" class="stat-desc">Burned: {{ burned |
+            ethformat | kformat }}</div>
+        <ng-template #loadingBurned>
+            <div class="stat-desc bg-gray-200 rounded animate-pulse w-1/2 h-6"></div>
+        </ng-template>
+    </div>
+</div>
+
+<div class="w-full shadow-xl stats sm:inline-grid hidden mt-12">
+    <div class="stat">
+        <div class="stat-figure text-secondary">
+            <fa-icon [icon]="tvlIcon" size="lg"></fa-icon>
+        </div>
+        <div class="stat-title">Total Value Locked</div>
+        <div *ngIf="(tokenData | async) as tokenData; else loadingTVL" class="stat-value">{{ tokenData.pairQuote | sum |
+            kformat | usd }}</div>
+        <ng-template #loadingTVL>
+            <div class="stat-value bg-gray-200 rounded animate-pulse w-1/2 h-10"></div>
+        </ng-template>
+        <div class="stat-desc">Accross all products</div>
+    </div>
+    <div class="stat">
+        <div class="stat-figure text-info">
+            <fa-icon [icon]="marketCapIcon" size="lg"></fa-icon>
+        </div>
+        <div class="stat-title">Market Cap</div>
+        <ng-container *ngIf="(tokenData | async) as tokenData; else loadingMC">
+            <ng-container *ngIf="(totalSupply | async) as totalSupply; else loadingMC">
+                <div *ngIf="(burnedTokens | async) as burn; else loadingMC" class="stat-value">{{ totalSupply |
+                    ethformat | dif:burn | mul:tokenData.tokenDayData[0].priceUSD | kformat | usd }}</div>
+            </ng-container>
+        </ng-container>
+        <ng-template #loadingMC>
+            <div class="stat-value bg-gray-200 rounded animate-pulse w-1/2 h-10"></div>
+        </ng-template>
+        <div *ngIf="(tokenData | async) as tokenData; else loadingPrice" class="stat-desc">Current Price: {{
+            tokenData.tokenDayData[0].priceUSD | kformat | usd }}</div>
+        <ng-template #loadingPrice>
+            <div class="stat-desc bg-gray-200 rounded animate-pulse w-1/2 h-6"></div>
+        </ng-template>
+    </div>
+    <div class="stat">
+        <div class="stat-figure text-primary">
+            <fa-icon [icon]="circulatingIcon" size="lg"></fa-icon>
+        </div>
+        <div class="stat-title">Circulating Tokens</div>
+        <ng-container *ngIf="(totalSupply | async) as totalSupply; else loadingCirc">
+            <div *ngIf="(burnedTokens | async) as burn; else loadingCirc" class="stat-value">{{ totalSupply | ethformat
+                | dif:burn | kformat }}</div>
+        </ng-container>
+        <ng-template #loadingCirc>
+            <div class="stat-value bg-gray-200 rounded animate-pulse w-1/2 h-10"></div>
+        </ng-template>
+        <div *ngIf="(burnedTokens | async) as burned; else loadingBurned" class="stat-desc">Burned: {{ burned |
+            ethformat | kformat }}</div>
+        <ng-template #loadingBurned>
+            <div class="stat-desc bg-gray-200 rounded animate-pulse w-1/2 h-6"></div>
+        </ng-template>
+    </div>
+</div>
