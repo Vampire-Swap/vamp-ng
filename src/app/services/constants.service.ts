@@ -17,6 +17,17 @@ export class ConstantsService {
     TOKEN_BALANCE: "tokenbalance",
     TOKEN_SUPPLY: "tokensupply"
   }
+  public FANTOM_CHAIN_DETAILS = {
+    "chainId": '0xfa',
+    "chainName": 'Fantom Opera',
+    "nativeCurrency": {
+      name: 'Fantom',
+      symbol: 'FTM',
+      decimals: 18
+    },
+    "rpcUrls": ['https://rpc.ftm.tools/'],
+    "blockExplorerUrls": ['https://ftmscan.com'],
+  }
 
   constructor() { }
 }

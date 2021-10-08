@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'vamp-ng';
+  title = 'VampireSwap';
+
+  constructor() {
+    document.addEventListener("click", (ev) => {
+      if ((<HTMLElement>ev.target).closest(".modal") && !(<HTMLElement>ev.target).classList.contains("modal-box")) {
+        document.querySelectorAll(".modal-toggle").forEach(element => {
+          (<HTMLInputElement>element).checked = false;
+        });
+      }
+    })
+  }
 }

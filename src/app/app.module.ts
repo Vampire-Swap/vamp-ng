@@ -22,6 +22,7 @@ import { MulPipe } from './pipes/mul.pipe';
 import { PoolsComponent } from './views/pools/pools.component';
 import { PoolBannerComponent } from './components/pool-banner/pool-banner.component';
 import { PoolCardComponent } from './components/pool-card/pool-card.component';
+import { AddressFmtPipe } from './pipes/address-fmt.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PoolCardComponent } from './components/pool-card/pool-card.component';
     MulPipe,
     PoolsComponent,
     PoolBannerComponent,
-    PoolCardComponent
+    PoolCardComponent,
+    AddressFmtPipe
   ],
   imports: [
     BrowserModule,

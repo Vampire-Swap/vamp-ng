@@ -4,12 +4,15 @@
             <a routerLink="" class="text-lg font-bold ml-2 text-primary flex justify-center items-center"><img src="../../../assets/Bat.png" alt="VampireSwap bat" width="62" height="62" class="mr-2">VampireSwap</a>
         </div>
         <div class="navbar-center">
-            <a routerLink="pools" class="btn btn-ghost btn-md rounded-btn normal-case text-base"><fa-icon [icon]="bloodIcon" class="mr-2"></fa-icon> Blood Pools</a>
-            <a routerLink="patches" class="btn btn-ghost btn-md rounded-btn normal-case text-base"><fa-icon [icon]="pumpkinIcon" class="mr-2"></fa-icon> Pumpkin Patches</a>
-            <a routerLink="roadmap" class="btn btn-ghost btn-md rounded-btn normal-case text-base"><fa-icon [icon]="roadmapIcon" class="mr-2"></fa-icon> Roadmap</a>
+            <a routerLink="pools" class="btn btn-ghost btn-md rounded-btn normal-case text-base hover:text-primary"><fa-icon [icon]="bloodIcon" class="mr-2"></fa-icon> Blood Pools</a>
+            <a routerLink="patches" class="btn btn-ghost btn-md rounded-btn normal-case text-base hover:text-primary"><fa-icon [icon]="pumpkinIcon" class="mr-2"></fa-icon> Pumpkin Patches</a>
+            <a routerLink="roadmap" class="btn btn-ghost btn-md rounded-btn normal-case text-base hover:text-primary"><fa-icon [icon]="roadmapIcon" class="mr-2"></fa-icon> Roadmap</a>
         </div>
         <div class="navbar-end">
-            <button class="btn btn-primary btn-md mr-2 normal-case text-base"><fa-icon [icon]="walletIcon" class="mr-2"></fa-icon> Connect Wallet</button>
+            <button *ngIf="account === ''; else loggedInBtn" id="wallet-button" (click)="connect()" class="btn btn-primary btn-md mr-2 normal-case text-base"><fa-icon [icon]="walletIcon" class="mr-2"></fa-icon> Connect Wallet</button>
+            <ng-template #loggedInBtn>
+                <button id="wallet-button" (click)="connect()" class="btn btn-primary btn-md mr-2 normal-case text-base"><fa-icon [icon]="walletIcon" class="mr-2"></fa-icon> {{ account | addressFmt }}</button>
+            </ng-template>
         </div>
     </div>
     
@@ -29,12 +32,15 @@
                 <fa-icon [icon]="closeIcon"></fa-icon>
             </button>
             <div class="flex flex-col text-center">
-                <a (click)="closeMobileNavbar()" routerLink="pools" class="btn btn-ghost btn-lg rounded-btn normal-case"><fa-icon [icon]="bloodIcon" class="mr-2"></fa-icon> Blood Pools</a>
-                <a (click)="closeMobileNavbar()" routerLink="patches" class="btn btn-ghost btn-lg rounded-btn normal-case"><fa-icon [icon]="pumpkinIcon" class="mr-2"></fa-icon> Pumpkin Patches</a>
-                <a (click)="closeMobileNavbar()" routerLink="roadmap" class="btn btn-ghost btn-lg rounded-btn normal-case"><fa-icon [icon]="roadmapIcon" class="mr-2"></fa-icon> Roadmap</a>
+                <a (click)="closeMobileNavbar()" routerLink="pools" class="btn btn-ghost btn-lg rounded-btn normal-case hover:text-primary"><fa-icon [icon]="bloodIcon" class="mr-2"></fa-icon> Blood Pools</a>
+                <a (click)="closeMobileNavbar()" routerLink="patches" class="btn btn-ghost btn-lg rounded-btn normal-case hover:text-primary"><fa-icon [icon]="pumpkinIcon" class="mr-2"></fa-icon> Pumpkin Patches</a>
+                <a (click)="closeMobileNavbar()" routerLink="roadmap" class="btn btn-ghost btn-lg rounded-btn normal-case hover:text-primary"><fa-icon [icon]="roadmapIcon" class="mr-2"></fa-icon> Roadmap</a>
             </div>
             <div class="flex justify-around mt-16 w-full">
-                <button class="btn btn-primary normal-case text-lg font-bold"><fa-icon [icon]="walletIcon" class="mr-2"></fa-icon> Connect Wallet</button>
+                <button *ngIf="account === ''; else loggedInBtn" id="wallet-button" (click)="connect()" class="btn btn-primary normal-case text-lg font-bold"><fa-icon [icon]="walletIcon" class="mr-2"></fa-icon> Connect Wallet</button>
+                <ng-template #loggedInBtn>
+                    <button id="wallet-button" (click)="connect()" class="btn btn-primary normal-case text-lg font-bold"><fa-icon [icon]="walletIcon" class="mr-2"></fa-icon> {{ account | addressFmt }}</button>
+                </ng-template>
             </div>
         </div>
     </div>
