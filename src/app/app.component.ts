@@ -10,7 +10,7 @@ export class AppComponent {
 
   constructor() {
     document.addEventListener("click", (ev) => {
-      if ((<HTMLElement>ev.target).closest(".modal") && !(<HTMLElement>ev.target).classList.contains("modal-box")) {
+      if ((<HTMLElement>ev.target).closest(".modal") && !(<HTMLElement>ev.target).closest(".modal-box")) {
         (<HTMLElement>ev.target).closest(".modal")?.classList.remove('modal-open')
       }
     })
