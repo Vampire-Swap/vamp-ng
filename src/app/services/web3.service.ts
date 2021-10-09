@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import Web3 from 'web3';
+import { ethers } from 'ethers';
 import { ConstantsService } from './constants.service';
 
 @Injectable({
@@ -10,36 +10,32 @@ export class Web3Service {
 
   private window: any = <any>window;
   public ACCOUNT: Subject<string> = new Subject();
-  public web3: Web3 = new Web3();
+  public web3: ethers.providers.Web3Provider|null = null;
 
   constructor(private constantsService: ConstantsService) { }
 
   public async connect() {
     if (this.window.ethereum) {
-      this.web3 = new Web3(this.window.ethereum);
-      const accounts: Array<string> = await this.web3.eth.requestAccounts();
+      this.web3 = new ethers.providers.Web3Provider(this.window.ethereum);
+      await this.web3.send("eth_requestAccounts", []);
 
-      const chainId = await this.web3.eth.getChainId();
-      this.checkChainId(chainId).then(() => this.ACCOUNT.next(accounts[0]))
+      const account = await this.web3.getSigner().getAddress();
+
+      const chainId = (await this.web3.getNetwork()).chainId;
+      this.checkChainId(chainId).then(() => this.ACCOUNT.next(account))
     }
   }
 
   private async checkChainId(chainId: number): Promise<void> {
     if (chainId !== 250 && chainId !== 4002) {
       try {
-        await (<any>this.web3.currentProvider).request({
-          method: 'wallet_switchEthereumChain',
-          params: [{chainId: this.constantsService.FANTOM_CHAIN_DETAILS.chainId}]
-        })
+        await this.web3?.send('wallet_switchEthereumChain', [{chainId: this.constantsService.FANTOM_CHAIN_DETAILS.chainId}])
         return Promise.resolve();
       }
       catch (switchError) {
         if ((<any>switchError).code === 4902) {
           try {
-            await (<any>this.web3.currentProvider).request({
-              method: 'wallet_addEthereumChain',
-              params: [this.constantsService.FANTOM_CHAIN_DETAILS]
-            })
+            await this.web3?.send('wallet_addEthereumChain', [this.constantsService.FANTOM_CHAIN_DETAILS])
             return Promise.resolve();
           }
           catch (addError) {
