@@ -11,9 +11,7 @@ export class AppComponent {
   constructor() {
     document.addEventListener("click", (ev) => {
       if ((<HTMLElement>ev.target).closest(".modal") && !(<HTMLElement>ev.target).classList.contains("modal-box")) {
-        document.querySelectorAll(".modal-toggle").forEach(element => {
-          (<HTMLInputElement>element).checked = false;
-        });
+        (<HTMLElement>ev.target).closest(".modal")?.classList.remove('modal-open')
       }
     })
   }

@@ -10,60 +10,60 @@
         </div>
         <p class="font-bold">Deposit VMP - Earn VMP</p>
         <div class="justify-end card-actions">
-            <label for="my-modal-2" class="btn btn-secondary modal-button">Manage</label>
-            <input type="checkbox" id="my-modal-2" class="modal-toggle">
-            <div class="modal">
-                <div class="modal-box flex flex-col justify-center items-center">
+            <button (click)="toggleModal()" for="my-modal-2" class="btn btn-secondary modal-button">Manage</button>
+        </div>
+    </div>
+</div>
 
-                    <div class="shadow-xl stats grid-flow-row sm:hidden">
-                        <div class="stat place-items-center place-content-center">
-                            <div class="stat-desc text-primary opacity-100">
-                                <fa-icon [icon]="walletIcon" size="lg"></fa-icon>
-                            </div>
-                            <div class="stat-title">Tokens in your wallet</div>
-                            <div class="stat-value">89,400</div>
-                        </div>
-                        <div class="stat place-items-center place-content-center">
-                            <div class="stat-desc text-primary opacity-100">
-                                <fa-icon [icon]="farmingIcon" size="lg"></fa-icon>
-                            </div>
-                            <div class="stat-title">Tokens to harvest</div>
-                            <div class="stat-value">89,400</div>
-                        </div>
-                    </div>
+<div class="modal" [id]="modalId">
+    <div class="modal-box flex flex-col justify-center items-center">
 
-                    <div class="shadow-xl stats hidden sm:flex">
-                        <div class="stat place-items-center place-content-center">
-                            <div class="stat-desc text-primary opacity-100">
-                                <fa-icon [icon]="walletIcon" size="lg"></fa-icon>
-                            </div>
-                            <div class="stat-title">Tokens in your wallet</div>
-                            <div class="stat-value">89,400</div>
-                        </div>
-                        <div class="stat place-items-center place-content-center">
-                            <div class="stat-desc text-primary opacity-100">
-                                <fa-icon [icon]="farmingIcon" size="lg"></fa-icon>
-                            </div>
-                            <div class="stat-title">Tokens to harvest</div>
-                            <div class="stat-value">89,400</div>
-                        </div>
-                    </div>
-
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Deposit VMP</span>
-                        </label>
-                        <div class="flex space-x-2">
-                            <input type="number" placeholder="0.00" class="w-full input input-primary input-bordered">
-                            <button class="btn btn-primary">Deposit</button>
-                        </div>
-                    </div>
-
-                    <div class="modal-action">
-                        <label for="my-modal-2" class="btn btn-secondary">Done</label>
-                    </div>
+        <div class="shadow-xl stats grid-flow-row sm:hidden">
+            <div class="stat place-items-center place-content-center">
+                <div class="stat-desc text-primary opacity-100">
+                    <fa-icon [icon]="walletIcon" size="lg"></fa-icon>
                 </div>
+                <div class="stat-title">Tokens in your wallet</div>
+                <div class="stat-value">89,400</div>
             </div>
+            <div class="stat place-items-center place-content-center">
+                <div class="stat-desc text-primary opacity-100">
+                    <fa-icon [icon]="farmingIcon" size="lg"></fa-icon>
+                </div>
+                <div class="stat-title">Tokens to harvest</div>
+                <div class="stat-value">89,400</div>
+            </div>
+        </div>
+
+        <div class="shadow-xl stats hidden sm:flex">
+            <div class="stat place-items-center place-content-center">
+                <div class="stat-desc text-primary opacity-100">
+                    <fa-icon [icon]="walletIcon" size="lg"></fa-icon>
+                </div>
+                <div class="stat-title">Tokens in your wallet</div>
+                <div class="stat-value">89,400</div>
+            </div>
+            <div class="stat place-items-center place-content-center">
+                <div class="stat-desc text-primary opacity-100">
+                    <fa-icon [icon]="farmingIcon" size="lg"></fa-icon>
+                </div>
+                <div class="stat-title">Tokens to harvest</div>
+                <div class="stat-value">89,400</div>
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label class="label">
+                <span class="label-text">Deposit VMP</span>
+            </label>
+            <div class="flex space-x-2">
+                <input type="number" placeholder="0.00" class="w-full input input-primary input-bordered">
+                <button class="btn btn-primary">Deposit</button>
+            </div>
+        </div>
+
+        <div class="modal-action">
+            <label for="my-modal-2" class="btn btn-secondary">Done</label>
         </div>
     </div>
 </div>
