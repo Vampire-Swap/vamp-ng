@@ -33,7 +33,7 @@ export class Web3Service {
         return Promise.resolve();
       }
       catch (switchError) {
-        if ((<any>switchError).code === 4902) {
+        if ((<any>switchError).code === 4902 || (<any>switchError).code === -32603) {
           try {
             await this.web3?.send('wallet_addEthereumChain', [this.constantsService.FANTOM_CHAIN_DETAILS])
             return Promise.resolve();
