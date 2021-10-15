@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
-import { faWallet } from '@fortawesome/free-solid-svg-icons';
+import { faChartArea, faPiggyBank, faWallet } from '@fortawesome/free-solid-svg-icons';
+import { Subject } from 'rxjs';
 import { v4 as uuid_v4 } from 'uuid';
+import { Pool } from './Pool';
 
 @Component({
   selector: 'pool-card',
@@ -11,6 +13,8 @@ import { v4 as uuid_v4 } from 'uuid';
 export class PoolCardComponent implements OnInit {
 
   public walletIcon: IconDefinition = faWallet;
+  public aprIcon: IconDefinition = faChartArea;
+  public depositIcon: IconDefinition = faPiggyBank;
   public farmingIcon: IconDefinition = {
     prefix: 'fas',
     iconName: 'wheat',
@@ -23,6 +27,9 @@ export class PoolCardComponent implements OnInit {
     ]
   }
   public modalId: string;
+
+  @Input()
+  public pool: Pool|null = null;
 
   constructor() {
     this.modalId = uuid_v4();

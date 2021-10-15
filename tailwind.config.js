@@ -27,8 +27,8 @@ module.exports = {
       styled: true,
       themes: [{
         'bloodyDracula': {
-          "primary": "#ff9580",
-          "primary-focus": "#FF6C4F",
+          "primary": "#ff5555",
+          "primary-focus": "#ff3b3b",
           "primary-content": "#1d1e25",
           "secondary": "#b9ffb3",
           "secondary-focus": "#8aff80",

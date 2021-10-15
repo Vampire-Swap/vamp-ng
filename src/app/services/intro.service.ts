@@ -7,7 +7,6 @@ import { BurnedTokensResponse } from '../utils/BurnedTokensResponse';
 import { Token, TokenResponse } from '../utils/Token';
 import { ConstantsService } from './constants.service';
 import { GraphCacheService } from './graph-cache.service';
-import { NumberFormatterService } from './number-formatter.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ import { NumberFormatterService } from './number-formatter.service';
 export class IntroService {
 
   private GET_LIQUIDITY_POOLS = gql`
-    query GetLiquidityPools {
+    query GetLiquidityPools_SPOOKY {
       token(id: "${this.constantsService.TRACKED_TOKEN}") {
         pairQuote(orderBy: reserveUSD, first: 10, orderDirection: desc) {
           reserveUSD
